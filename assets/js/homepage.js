@@ -119,9 +119,9 @@ function addDrink(button) {
     let newItem = document.createElement('li');
     let drinkName = button.parentNode.children[0].textContent;
     let ingredients = button.parentNode.children[1].textContent;
-    let price = priceInput.value;
+    // let price = priceInput.value;
 
-    newItem.textContent = drinkName + "- " + ingredients + ' $' + price;
+    newItem.textContent = drinkName + "- " + ingredients;
     drinksList.appendChild(newItem);
 }
 

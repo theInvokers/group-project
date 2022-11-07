@@ -11,57 +11,85 @@
 </head>
 
 <body>
-	<header>
-</head>
-
-<body>
-	<header class="columns">
-		<h1>Menu Maker</h1>
-	</header>
-	<!-- Vertical Column? -->
-	<main>
-		<!-- Dropdown menu for drink, starter, entree -->
-		<div class="columns">
-			<section class="column is-one-third">
-				<!-- Dropdown menu for searh criteria -->
-				<table>
-					<h2>Select Your Recipe Type</h2>
-					<div class="control">
-						<div class="select">
-							<select name="Select" id="select-field">
-								<option value="drink">Drink</option>
-								<option value="starter">Starter</option>
-								<option value="entree">Entree</option>
-							</select>
-						</div>
-					</div>
-				</table>
-				<!-- Input field for searching -->
-				<input class="itemSearch" type="text">
-				<button id="search">Submit</button>
-				<!-- Input field for setting price -->
-				<table>
-					<h2>Select Your Price</h2>
-					<input id='price' type="text">
-					<button>Submit</button>
-				</table>
-			</section>
-			<section id = "results" class="column is-two-thirds">Results</section>
+	<header class="hero is-medium is-warning has-text-centered">
+		<div class="hero-body">
+		  <h1 class="title is-size-1">Menu Maker</h1>
 		</div>
-		<!-- Section where menu is created -->
-		<section class="columns">
-			<div class="column is-offset-one-quarter">
-				<h3>See Your Menu Here</h3>
-				<ul class="drinks">Drinks</ul>
-                <hr>
-                <ul class="starters">Starters</ul>
-                <hr>
-                <ul class="entrees">Entrees</ul>
+	</header>
+
+	<main>
+		<div class="tile is-ancestor">
+			<!-- Dropdown menu for drink, starter, entree -->
+			<!-- Dropdown menu for searh criteria -->
+			<div class="tile is-4 is-vertical is-parent">
+			<div class="tile is-child box">	
+				<h2 class="title has-text-centered has-text-warning-dark">Select Your Recipe Type</h2>
+				<!-- Input field for searching -->
+				<div class="field has-addons has-addons-centered">
+					<p class="control">
+					  <span class="select" id="select-field">
+						<select>
+						  <option>Select</option>
+						  <option value="drink">Drink</option>
+						  <option value="starter">Starter</option>
+						  <option value="entree">Entree</option>
+						</select>
+					  </span>
+					</p>
+					<p class="control">
+					  <input class="input itemSearch has-text-centered" type="text" placeholder="What would you like?">
+					</p>
+					<p class="control">
+					  <a class="button has-background-warning-dark has-text-white" id="search">
+						Search
+					  </a>
+					</p>
+				  </div>
+			<!-- Input field for setting price -->
+				<div class="field has-addons has-addons-centered">
+					<p class="control">
+						<a class="button is-static">
+						  $
+						</a>
+					</p>
+					<p class="control">
+					  <input class="input itemSearch has-text-centered " type="text" placeholder="Price">
+					</p>
+					<p class="control">
+					  <a class="button has-background-warning-dark has-text-white" id="search">
+						Search
+					  </a>
+					</p>
+				  </div>
 			</div>
-		</section>
+
+			<!-- Section where menu is created -->
+			<div class="tile is-child box">
+				<h2 class="title has-text-centered has-text-warning-dark">See Your Menu Here</h2>
+					<div class="subtitle has-text-centered has-background-white-ter seeMenuSub">Drinks</div>
+					<ul class="drinks"></ul>
+					<hr>
+					<div class="subtitle has-text-centered has-background-white-ter	seeMenuSub">Starters</div>
+					<ul class="starters"></ul>
+					<hr>
+					<div class="subtitle has-text-centered has-background-white-ter	seeMenuSub">Entrees</div>
+					<ul class="entrees"></ul>
+			</div>
+			</div>
+		
+			<!-- Search Results -->
+			<div class="tile is-parent">
+			<div class="tile is-child box">
+				<h2 class="title has-text-centered has-text-warning-dark">Results</h2>
+				<section id="results"></section>
+			</div>
+			</div>
+		</div>
 	</main>
-	<footer class="footer">Version 0.1</footer>
+
+	<footer class="footer has-text-centered">
+		Version 0.1
+	</footer>
 	<script src="./assets/js/homepage.js"></script>
 </body>
-
 </html>

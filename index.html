@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menu Maker</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    <!-- Vertical Column? -->
-        <!-- Dropdown menu for drink, starter, entree -->
-        <!-- Input field for searching -->
-        <!-- Dropdown menu for searh criteria -->
-        <!-- Input field for setting price -->
-    <!-- Section where menu is created -->
-    <script src = "./assets/js/homepage.js"></script>
+	<header>
+		<h1>Menu Maker</h1>
+	</header>
+	<!-- Vertical Column? -->
+	<main>
+		<!-- Dropdown menu for drink, starter, entree -->
+		<div class="columns">
+			<section class="column is-one-third">
+				<!-- Dropdown menu for searh criteria -->
+				<table>
+					<h2>Select Your Recipe Type</h2>
+					<div class="control">
+						<div class="select">
+							<select name="Select" id="select-field">
+								<option value="drink">Drink</option>
+								<option value="starter">Starter</option>
+								<option value="entree">Entree</option>
+							</select>
+						</div>
+					</div>
+				</table>
+				<!-- Input field for searching -->
+				<input class="itemSearch" type="text">
+				<button id="search">Submit</button>
+				<!-- Input field for setting price -->
+				<table>
+					<h2>Select Your Price</h2>
+					<input type="text">
+					<button>Submit</button>
+				</table>
+			</section>
+			<section id = "results" class="column is-two-thirds">Results</section>
+		</div>
+		<!-- Section where menu is created -->
+		<section class="columns">
+			<div class="column is-offset-one-quarter">
+				<h3>See Your Menu Here</h3>
+				<!-- <h4 class="columns">Menu</h4> -->
+			</div>
+		</section>
+	</main>
+	<footer class="footer">Version 0.1</footer>
+	<script src="./assets/js/homepage.js"></script>
 </body>
+
 </html>

@@ -2,6 +2,8 @@ var dropDownOptions = document.querySelector("select");
 var searchBtn = document.querySelector("#search");
 var itemField = document.querySelector(".itemSearch");
 var resultsSection = document.querySelector('#results');
+var priceInput = document.querySelector('#price');
+var drinksList= document.querySelector('.drinks')
 
 // Determines the input selected by the dropdown menu
 function determineSearch() {
@@ -21,7 +23,6 @@ function getDrinkApi() {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    console.log(data.drinks);
                     for (i = 0; i < data.drinks.length; i++) {
                         let drinkName = data.drinks[i].strDrink;
                         let ingredients = [];
@@ -50,7 +51,7 @@ function getDrinkApi() {
                         displayResult.appendChild(addBtn);
 
                         addBtn.addEventListener('click', function(){
-                            //A function to add the item to the menu
+                            addDrink(this);
                         })
 
                         resultsSection.appendChild(displayResult);
@@ -87,8 +88,16 @@ function clearResults() {
 searchBtn.addEventListener("click", determineSearch);
 // someButton.addeventlistener('click', function(){})
 
-// A function that takes the data pulled from the drink API and
-// adds it to the menu + add price
+function addDrink(button) {
+    console.log(button.parentNode.children[1]);
+    let newItem = document.createElement('li');
+    let drinkName = button.parentNode.children[0].textContent;
+    let ingredients = button.parentNode.children[1].textContent;
+    let price = priceInput.value;
+
+    newItem.textContent = drinkName + "- " + ingredients + ' $' + price;
+    drinksList.appendChild(newItem);
+}
 
 // A function that takes the data pulled from the food API and
 // adds it to the menu + add price

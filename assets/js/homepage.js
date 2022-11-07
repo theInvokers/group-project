@@ -58,7 +58,7 @@ function getDrinkApi() {
                 })
             }
         })
-}
+    }
 // someButton.addeventlistener('click', function(){})
 
 // An event listener that takes the input from the dish field and
@@ -81,6 +81,7 @@ function clearResults() {
         element.remove();
     });
 }
+
 // getDrinkApi();
 // getFoodApi();
 searchBtn.addEventListener("click", determineSearch);

@@ -65,15 +65,41 @@ function getDrinkApi() {
 // An event listener that takes the input from the dish field and
 // pulls data from the api
 function getFoodApi() {
-    var foodUrl = "https://api.edamam.com/api/recipes/v2?type=public&app_id=e8edd3f6&app_key=965507dba90927c9c7322fa83aa1bdb8"
-    fetch(foodUrl)
-        .then(function (response) {
-            if (response.ok) {
-                response.json().then(function (data) {
-                    console.log(data);
-                })
-            }
-        })
+	var foodUrl = "https://api.edamam.com/api/recipes/v2?type=public&app_id=e8edd3f6&app_key=965507dba90927c9c7322fa83aa1bdb8&cuisineType=American&mealType=Breakfast"
+	fetch(foodUrl)
+			.then(function (response) {
+					if (response.ok) {
+							response.json().then(function (data) {
+									console.log(data.hits);
+									for (i = 1; i < data.hits.length; i++){
+										var mealName = data.hits[0].recipe.label
+										var foodIngredients = [];
+										console.log(data.hits[0].recipe);
+										for (var i = 0 ; i < data.hits.recipe.ingredients; i++)
+											if (data.hits[0].recipe.ingredients[i].food){
+												foodIngredients.push(data.hits[0].recipe[11].food);
+												
+											} else {
+													break;
+											}
+											var displayResult = document.createElement("div");
+											var displayName = document.createElement("p");
+											var displayIng = document.createElement("p");
+											var addBtn = document.createElement("button");
+
+											displayResult.setAttribute("class", "food-result");
+											displayName.textContent = mealName;
+											displayIng.textContent = "Ingredients: " + foodIngredients.join(", ");
+											addBtn.textContent = "Add Food to Menu";
+
+											displayResult.appendChild(displayName);
+											displayResult.appendChild(displayIng);
+											displayResult.appendChild(addBtn)
+									}
+									resultsSection.appendChild(displayResult);
+							})
+					}
+			})
 }
 
 function clearResults() {

@@ -1,4 +1,15 @@
-.drinkResult{
+/* menu styling */
+.tile > h2 {
+    padding: 0.5em;
+}
+
+.seeMenuSub {
+    padding: 0.5em;
+}
+
+/* drinks styling */
+
+.drinkResult {
     border: 1px solid black;
     padding: 1em;
         border-color: #efefef;
@@ -9,24 +20,36 @@
     padding: 0.5em;
 }
 
-.drinkRestult:nth-child(1) {
-    color: blue;
-}
-
 .drinkResult > button {
     color: #946c00;
     padding: 0.5em;
     border-radius: 6px;
 }
 
-.seeMenuSub {
-    padding: 0.5em;
-}
-
 .drinks > li {
     padding: 0.5em;
 }
 
-.tile > h2 {
+
+/* food styling */
+
+.food-result {
+    border: 1px solid black;
+    padding: 1em;
+    border-color: #efefef;
+
+}
+
+.food-result > p {
+    padding: 0.5em;
+}
+
+.food-result > button {
+    color: #946c00;
+    padding: 0.5em;
+    border-radius: 6px;
+}
+
+.entrees > li {
     padding: 0.5em;
 }

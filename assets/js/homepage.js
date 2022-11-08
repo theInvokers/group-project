@@ -65,6 +65,7 @@ function getDrinkApi() {
 // An event listener that takes the input from the dish field and
 // pulls data from the api
 function getFoodApi() {
+    clearResults();
 	var foodUrl = "https://api.edamam.com/api/recipes/v2?type=public&q=" + itemField.value + "&app_id=e8edd3f6&app_key=965507dba90927c9c7322fa83aa1bdb8"
 	fetch(foodUrl)
 			.then(function (response) {

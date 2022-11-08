@@ -17,7 +17,7 @@
 }
 
 .drinkResult > p {
-    padding: 0.5em;
+    padding: 1em;
 }
 
 .drinkResult > button {
@@ -52,4 +52,13 @@
 
 .entrees > li {
     padding: 0.5em;
+}
+
+/* delete button */
+
+.delBtn {
+    color: #946c00;
+    padding: 0.5em;
+    border-radius: 6px;
+    margin: 5px;
 }

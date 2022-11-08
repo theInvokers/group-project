@@ -118,26 +118,61 @@ searchBtn.addEventListener("click", determineSearch);
 // someButton.addeventlistener('click', function(){})
 
 function addDrink(button) {
-    console.log(button.parentNode.children[1]);
+    // console.log(button.parentNode.children[1]);
     let newItem = document.createElement('li');
     let drinkName = button.parentNode.children[0].textContent;
     let ingredients = button.parentNode.children[1].textContent;
-    // let price = priceInput.value;
+    let delBtn = document.createElement('button');
+    let price = priceInput.value;
+    delBtn.setAttribute("class", 'delBtn');
 
-    newItem.textContent = drinkName + " - " + ingredients;
+    newItem.textContent = drinkName + " - " + ingredients + ' - $' + price;
+    delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
     drinksList.appendChild(newItem);
-}
+    newItem.appendChild(delBtn);
+
+    //remove menu item
+    function remove() {
+        this.parentNode.parentNode.removeChild(this.parentNode);
+      }
+      
+      var lis = document.querySelectorAll('li');
+      var button = document.querySelectorAll('.delBtn');
+      
+      for (var i = 0, len = lis.length; i < len; i++) {
+        button[i].addEventListener('click', remove, false);
+      }
+};
+
+
 
 function addFood(button) {
-	console.log(button.parentNode.children[1]);
+	// console.log(button.parentNode.children[1]);
 	let newItem = document.createElement('li');
 	let foodName = button.parentNode.children[0].textContent;
 	let ingredients = button.parentNode.children[1].textContent;
-	// let price = priceInput.value;
+    let delBtn = document.createElement('button');
+	let price = priceInput.value;
 
-	newItem.textContent = foodName + " - " + ingredients;
-	foodsList.appendChild(newItem);
-}
+    delBtn.setAttribute("class", "delBtn");
+
+	newItem.textContent = foodName + " - " + ingredients + ' - $' + price;
+    delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    foodsList.appendChild(newItem);
+    newItem.appendChild(delBtn);
+
+    //remove menu item
+    function remove() {
+        this.parentNode.parentNode.removeChild(this.parentNode);
+      }
+      
+      var lis = document.querySelectorAll('li');
+      var button = document.querySelectorAll('.delBtn');
+      
+      for (var i = 0, len = lis.length; i < len; i++) {
+        button[i].addEventListener('click', remove, false);
+      };
+};
 // A function that takes the data pulled from the food API and
 // adds it to the menu + add price
 

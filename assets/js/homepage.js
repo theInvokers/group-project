@@ -3,8 +3,8 @@ var searchBtn = document.querySelector("#search");
 var itemField = document.querySelector(".itemSearch");
 var resultsSection = document.querySelector('#results');
 var priceInput = document.querySelector('#price');
-var drinksList= document.querySelector('.drinks')
-
+var drinksList= document.querySelector('.drinks');
+var foodsList = document.querySelector(".entrees");
 // Determines the input selected by the dropdown menu
 function determineSearch() {
     //needs a way to determine which API to use...
@@ -73,10 +73,10 @@ function getFoodApi() {
 									for (i = 0; i < data.hits.length; i++){
 										var mealName = data.hits[i].recipe.label
 										var foodIngredients = [];
-										for (var j = 0 ; j < data.hits[i].recipe.ingredients[j].length; i++)
+										for (var j = 0 ; j < data.hits[i].recipe.ingredients.length; j++)
 											if (data.hits[i].recipe.ingredients.length) {
+												console.log(data.hits[i].recipe.ingredients[j].food);
 												foodIngredients.push(data.hits[i].recipe.ingredients[j].food);
-												console.log(data.hits[i].recipe.ingredients[j].food)
 											} else {
 													break;
 											}
@@ -89,12 +89,16 @@ function getFoodApi() {
 											displayName.textContent = mealName;
 											displayIng.textContent = "Ingredients: " + foodIngredients.join(", ");
 											addBtn.textContent = "Add Food to Menu";
-
+											
+											addBtn.addEventListener("click", function(){
+												addFood(this);
+											})
 											displayResult.appendChild(displayName);
 											displayResult.appendChild(displayIng);
 											displayResult.appendChild(addBtn)
-									}
-									resultsSection.appendChild(displayResult);
+											resultsSection.appendChild(displayResult);
+										}
+									
 							})
 					}
 			})
@@ -123,6 +127,16 @@ function addDrink(button) {
     drinksList.appendChild(newItem);
 }
 
+function addFood(button) {
+	console.log(button.parentNode.children[1]);
+	let newItem = document.createElement('li');
+	let foodName = button.parentNode.children[0].textContent;
+	let ingredients = button.parentNode.children[1].textContent;
+	// let price = priceInput.value;
+
+	newItem.textContent = foodName + "- " + ingredients;
+	foodsList.appendChild(newItem);
+}
 // A function that takes the data pulled from the food API and
 // adds it to the menu + add price
 

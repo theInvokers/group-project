@@ -5,6 +5,11 @@ var resultsSection = document.querySelector('#results');
 var priceInput = document.querySelector('#price');
 var drinksList= document.querySelector('.drinks');
 var foodsList = document.querySelector(".entrees");
+var saveMenuBtn = document.querySelector("#saveMenu");
+var menu = document.querySelector('#menu');
+
+const { jsPDF } = window.jspdf;
+
 // Determines the input selected by the dropdown menu
 function determineSearch() {
     //needs a way to determine which API to use...
@@ -147,3 +152,16 @@ function addFood(button) {
 // A function that lets you delete items from the menu
 
 // A function that prints the menu to a PDF?
+saveMenuBtn.addEventListener('click', function() {
+    var doc = new jsPDF();
+
+    var menuStrings = [];
+    for (i = 0; i <menu.children.length ; i++){
+        if (menu.children[i].textContent){
+            menuStrings.push(menu.children[i].textContent);
+        }
+    }
+    console.log(menuStrings);
+    doc.text(menuStrings, 10, 10);
+    doc.save();
+})

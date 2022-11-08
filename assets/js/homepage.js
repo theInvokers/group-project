@@ -124,7 +124,7 @@ function addDrink(button) {
     let ingredients = button.parentNode.children[1].textContent;
     // let price = priceInput.value;
 
-    newItem.textContent = drinkName + "- " + ingredients;
+    newItem.textContent = drinkName + " - " + ingredients;
     drinksList.appendChild(newItem);
 }
 
@@ -135,7 +135,7 @@ function addFood(button) {
 	let ingredients = button.parentNode.children[1].textContent;
 	// let price = priceInput.value;
 
-	newItem.textContent = foodName + "- " + ingredients;
+	newItem.textContent = foodName + " - " + ingredients;
 	foodsList.appendChild(newItem);
 }
 // A function that takes the data pulled from the food API and

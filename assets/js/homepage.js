@@ -3,8 +3,8 @@ var searchBtn = document.querySelector("#search");
 var itemField = document.querySelector(".itemSearch");
 var resultsSection = document.querySelector('#results');
 var priceInput = document.querySelector('#price');
-var drinksList= document.querySelector('.drinks')
-
+var drinksList= document.querySelector('.drinks');
+var foodsList = document.querySelector(".entrees");
 // Determines the input selected by the dropdown menu
 function determineSearch() {
     //needs a way to determine which API to use...
@@ -65,20 +65,18 @@ function getDrinkApi() {
 // An event listener that takes the input from the dish field and
 // pulls data from the api
 function getFoodApi() {
-	var foodUrl = "https://api.edamam.com/api/recipes/v2?type=public&app_id=e8edd3f6&app_key=965507dba90927c9c7322fa83aa1bdb8&cuisineType=American&mealType=Breakfast"
+	var foodUrl = "https://api.edamam.com/api/recipes/v2?type=public&q=" + itemField.value + "&app_id=e8edd3f6&app_key=965507dba90927c9c7322fa83aa1bdb8"
 	fetch(foodUrl)
 			.then(function (response) {
 					if (response.ok) {
 							response.json().then(function (data) {
-									console.log(data.hits);
-									for (i = 1; i < data.hits.length; i++){
-										var mealName = data.hits[0].recipe.label
+									for (i = 0; i < data.hits.length; i++){
+										var mealName = data.hits[i].recipe.label
 										var foodIngredients = [];
-										console.log(data.hits[0].recipe);
-										for (var i = 0 ; i < data.hits.recipe.ingredients; i++)
-											if (data.hits[0].recipe.ingredients[i].food){
-												foodIngredients.push(data.hits[0].recipe[11].food);
-												
+										for (var j = 0 ; j < data.hits[i].recipe.ingredients.length; j++)
+											if (data.hits[i].recipe.ingredients.length) {
+												console.log(data.hits[i].recipe.ingredients[j].food);
+												foodIngredients.push(data.hits[i].recipe.ingredients[j].food);
 											} else {
 													break;
 											}
@@ -91,12 +89,16 @@ function getFoodApi() {
 											displayName.textContent = mealName;
 											displayIng.textContent = "Ingredients: " + foodIngredients.join(", ");
 											addBtn.textContent = "Add Food to Menu";
-
+											
+											addBtn.addEventListener("click", function(){
+												addFood(this);
+											})
 											displayResult.appendChild(displayName);
 											displayResult.appendChild(displayIng);
 											displayResult.appendChild(addBtn)
-									}
-									resultsSection.appendChild(displayResult);
+											resultsSection.appendChild(displayResult);
+										}
+									
 							})
 					}
 			})
@@ -125,6 +127,16 @@ function addDrink(button) {
     drinksList.appendChild(newItem);
 }
 
+function addFood(button) {
+	console.log(button.parentNode.children[1]);
+	let newItem = document.createElement('li');
+	let foodName = button.parentNode.children[0].textContent;
+	let ingredients = button.parentNode.children[1].textContent;
+	// let price = priceInput.value;
+
+	newItem.textContent = foodName + "- " + ingredients;
+	foodsList.appendChild(newItem);
+}
 // A function that takes the data pulled from the food API and
 // adds it to the menu + add price
 

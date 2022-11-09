@@ -245,7 +245,7 @@ function addStarter(button) {
 function checkDuplicate(string, section) {
     var parentEl = document.querySelector(section);
     for (i = 0; i < parentEl.children.length; i++) {
-        if (parentEl.children[0].textContent.split("-")[0] == string) {
+        if (parentEl.children[i].textContent.split("-")[0] == string) {
             return true;
         }
     }

@@ -11,7 +11,7 @@ function determineSearch() {
 	//needs a way to determine which API to use...
 	if (dropDownOptions.value == "drink") {
 		getDrinkApi();
-	} else if (dropDownOptions.value == "starter" || "entree") {
+	} else if (dropDownOptions.value == "food") {
 		getFoodApi();
 	}
 }
@@ -92,7 +92,7 @@ function getFoodApi() {
 							displayResult.setAttribute("class", "entree-result");
 							displayName.textContent = mealName;
 							displayIng.textContent = "Ingredients: " + foodIngredients.join(", ");
-							addBtn.textContent = "Add Food to Menu";
+							addBtn.textContent = "Add Entree to Menu";
 
 							addBtn.addEventListener("click", function () {
 								addEntree(this);
@@ -119,7 +119,7 @@ function getFoodApi() {
 							displayResult.setAttribute("class", "starter-result");
 							displayName.textContent = mealName;
 							displayIng.textContent = "Ingredients: " + foodIngredients.join(", ");
-							addBtn.textContent = "Add Food to Menu";
+							addBtn.textContent = "Add Starter to Menu";
 
 							addBtn.addEventListener("click", function () {
 								addStarter(this);

@@ -35,26 +35,49 @@ button {
 }
 
 
-/* food styling */
+/* starter styling */
 
-.food-result {
+.starter-result {
     border: 1px solid black;
     padding: 1em;
     border-color: #efefef;
 
 }
 
-.food-result > p {
+.starter-result > p {
     padding: 0.5em;
 }
 
-.food-result > button {
+.starter-result > button {
     color: #946c00;
     padding: 0.5em;
     border-radius: 6px;
 }
 
-.entrees > li {
+.starter > li {
+    padding: 0.5em;
+}
+
+/* starter styling */
+
+.entree-result {
+    border: 1px solid black;
+    padding: 1em;
+    border-color: #efefef;
+
+}
+
+.entree-result > p {
+    padding: 0.5em;
+}
+
+.entree-result > button {
+    color: #946c00;
+    padding: 0.5em;
+    border-radius: 6px;
+}
+
+.entree > li {
     padding: 0.5em;
 }
 

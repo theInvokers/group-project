@@ -5,7 +5,8 @@ var resultsSection = document.querySelector('#results');
 var priceInput = document.querySelector('#price');
 var drinksList = document.querySelector('.drinks');
 var entreeList = document.querySelector(".entree");
-var starterList = document.querySelector(".starter")
+var starterList = document.querySelector(".starter");
+var saveBtn = document.querySelector(".save");
 // Determines the input selected by the dropdown menu
 function determineSearch() {
     //needs a way to determine which API to use...
@@ -255,5 +256,32 @@ function checkDuplicate(string, section) {
 
 // A function that saves the menu to local storage so you can pick
 // up where you left off
+
+function saveMenu() {
+    var drinkSave = [];
+    for (var i = 0; drinksList.children.length; i++){
+        drinkSave.push(drinksList.children[i].textcontent);
+    }
+    var starterSave = [];
+    for (var i = 0; starterList.children.length; i++){
+        starterSave.push(starterList.children[i].textcontent);
+    }
+    var entreeSave = [];
+    for (var i = 0; entreeList.children.length; i++){
+        entreeSave.push(entreeList.children[i].textcontent);
+    }
+
+
+    
+    localStorage.setItem('drinkmenu', JSON.stringify(drinkSave));
+    localStorage.setItem('startermenu', JSON.stringify(starterSave));
+    localStorage.setItem('entreemenu', JSON.stringify(entreeSave));
+    console.log(localStorage.setItem)
+}
+
+
+
+saveBtn.addEventListener('click', saveMenu());
+
 
 // A function that prints the menu to a PDF?

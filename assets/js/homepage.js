@@ -166,7 +166,7 @@ function addDrink(button) {
     let price = priceInput.value;
     delBtn.setAttribute("class", 'delBtn');
 
-    newItem.textContent = drinkName + " - " + ingredients + ' - $' + price;
+    newItem.textContent = drinkName + "- " + ingredients + ' - $' + price;
     delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
     drinksList.appendChild(newItem);
     newItem.appendChild(delBtn);
@@ -194,7 +194,7 @@ function addEntree(button) {
 
     delBtn.setAttribute("class", "delBtn");
 
-    newItem.textContent = foodName + " - " + ingredients + ' - $' + price;
+    newItem.textContent = foodName + "- " + ingredients + ' - $' + price;
     delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
     entreeList.appendChild(newItem);
     newItem.appendChild(delBtn);
@@ -222,7 +222,7 @@ function addStarter(button) {
 
     delBtn.setAttribute("class", "delBtn");
 
-    newItem.textContent = foodName + " - " + ingredients + ' - $' + price;
+    newItem.textContent = foodName + "- " + ingredients + ' - $' + price;
     delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
     starterList.appendChild(newItem);
     newItem.appendChild(delBtn);

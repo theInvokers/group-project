@@ -28,12 +28,17 @@ button {
     color: #946c00;
     padding: 0.5em;
     border-radius: 6px;
+    margin: 10px;
 }
 
 .drinks > li {
     padding: 0.5em;
 }
 
+.drinkName {
+    color: #946c00;
+    font-weight: bold;
+}
 
 /* starter styling */
 
@@ -52,10 +57,16 @@ button {
     color: #946c00;
     padding: 0.5em;
     border-radius: 6px;
+    margin: 10px;
 }
 
 .starter > li {
     padding: 0.5em;
+}
+
+.starterName {
+    color: #946c00;
+    font-weight: bold;
 }
 
 /* starter styling */
@@ -75,10 +86,16 @@ button {
     color: #946c00;
     padding: 0.5em;
     border-radius: 6px;
+    margin: 10px;
 }
 
 .entree > li {
     padding: 0.5em;
+}
+
+.entreeName {
+    color: #946c00;
+    font-weight: bold;
 }
 
 /* delete button */

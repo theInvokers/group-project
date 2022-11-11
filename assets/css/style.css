@@ -11,12 +11,16 @@ button {
     padding: 0.5em;
 }
 
+.tile {
+flex-grow: 0;
+
+}
 /* drinks styling */
 
 .drinkResult {
     border: 1px solid black;
     padding: 1em;
-        border-color: #efefef;
+    border-color: #efefef;
 
 }
 
@@ -105,4 +109,10 @@ button {
     padding: 0.5em;
     border-radius: 6px;
     margin: 5px;
+}
+
+/* menu options */
+
+.menuOptions > button {
+    margin: 7px;
 }

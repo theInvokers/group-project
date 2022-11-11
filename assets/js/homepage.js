@@ -165,7 +165,7 @@ function addDrink(button) {
     // console.log(button.parentNode.children[1]);
     let newItem = document.createElement('li');
     let drinkName = button.parentNode.children[0].textContent;
-    let ingredients = button.parentNode.children[1].textContent;
+    let ingredients = button.parentNode.children[1].textContent.replace("-","");
     let delBtn = document.createElement('button');
     let price = priceInput.value;
     delBtn.setAttribute("class", 'delBtn');
@@ -192,7 +192,7 @@ function addEntree(button) {
     // console.log(button.parentNode.children[1]);
     let newItem = document.createElement('li');
     let foodName = button.parentNode.children[0].textContent;
-    let ingredients = button.parentNode.children[1].textContent;
+    let ingredients = button.parentNode.children[1].textContent.replace("-","");
     let delBtn = document.createElement('button');
     let price = priceInput.value;
 
@@ -220,7 +220,7 @@ function addStarter(button) {
     // console.log(button.parentNode.children[1]);
     let newItem = document.createElement('li');
     let foodName = button.parentNode.children[0].textContent;
-    let ingredients = button.parentNode.children[1].textContent;
+    let ingredients = button.parentNode.children[1].textContent.replace("-","");
     let delBtn = document.createElement('button');
     let price = priceInput.value;
 

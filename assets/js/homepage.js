@@ -44,6 +44,8 @@ function getDrinkApi() {
                         let addBtn = document.createElement('button');
 
                         displayResult.setAttribute('class', 'drinkResult');
+                        displayName.setAttribute('class', 'drinkName');
+
 
                         displayName.textContent = drinkName;
                         displayIng.textContent = 'Ingredients: ' + ingredients.join(', ');
@@ -93,6 +95,7 @@ function getFoodApi() {
                             var addBtn = document.createElement("button");
 
                             displayResult.setAttribute("class", "entree-result");
+                            displayName.setAttribute('class', 'entreeName');
                             displayName.textContent = mealName;
                             displayIng.textContent = "Ingredients: " + foodIngredients.join(", ");
                             addBtn.textContent = "Add Entree to Menu";
@@ -122,6 +125,7 @@ function getFoodApi() {
                             var addBtn = document.createElement("button");
 
                             displayResult.setAttribute("class", "starter-result");
+                            displayName.setAttribute('class', 'starterName');
                             displayName.textContent = mealName;
                             displayIng.textContent = "Ingredients: " + foodIngredients.join(", ");
                             addBtn.textContent = "Add Starter to Menu";

@@ -7,6 +7,7 @@ var drinksList = document.querySelector('.drinks');
 var entreeList = document.querySelector(".entree");
 var starterList = document.querySelector(".starter");
 var saveBtn = document.querySelector(".save");
+var restoreBtn = document.querySelector('.restore');
 // Determines the input selected by the dropdown menu
 function determineSearch() {
     //needs a way to determine which API to use...
@@ -76,14 +77,12 @@ function getFoodApi() {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    console.log(data.hits);
                     for (var i = 0; i < data.hits.length; i++) {
                         if (data.hits[i].recipe.dishType == "main course") {
                             var mealName = data.hits[i].recipe.label
                             var foodIngredients = [];
                             for (var j = 0; j < data.hits[i].recipe.ingredients.length; j++)
                                 if (data.hits[i].recipe.ingredients.length) {
-                                    console.log(i);
                                     foodIngredients.push(data.hits[i].recipe.ingredients[j].food);
                                 } else {
                                     break;
@@ -108,7 +107,6 @@ function getFoodApi() {
                             displayResult.appendChild(displayIng);
                             displayResult.appendChild(addBtn);
                             resultsSection.appendChild(displayResult);
-                            console.log("this is an entree");
                         } else {
                             var mealName = data.hits[i].recipe.label
                             var foodIngredients = [];
@@ -168,7 +166,7 @@ function addDrink(button) {
     let price = priceInput.value;
     delBtn.setAttribute("class", 'delBtn');
 
-    newItem.textContent = drinkName + " - " + ingredients + ' - $' + price;
+    newItem.textContent = drinkName + "- " + ingredients + ' - $' + price;
     delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
     drinksList.appendChild(newItem);
     newItem.appendChild(delBtn);
@@ -196,7 +194,7 @@ function addEntree(button) {
 
     delBtn.setAttribute("class", "delBtn");
 
-    newItem.textContent = foodName + " - " + ingredients + ' - $' + price;
+    newItem.textContent = foodName + "- " + ingredients + ' - $' + price;
     delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
     entreeList.appendChild(newItem);
     newItem.appendChild(delBtn);
@@ -224,7 +222,7 @@ function addStarter(button) {
 
     delBtn.setAttribute("class", "delBtn");
 
-    newItem.textContent = foodName + " - " + ingredients + ' - $' + price;
+    newItem.textContent = foodName + "- " + ingredients + ' - $' + price;
     delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
     starterList.appendChild(newItem);
     newItem.appendChild(delBtn);
@@ -259,29 +257,106 @@ function checkDuplicate(string, section) {
 
 function saveMenu() {
     var drinkSave = [];
-    for (var i = 0; drinksList.children.length; i++){
-        drinkSave.push(drinksList.children[i].textcontent);
+    for (var i = 0; i < drinksList.children.length; i++) {
+        drinkSave.push(drinksList.children[i].textContent);
     }
     var starterSave = [];
-    for (var i = 0; starterList.children.length; i++){
-        starterSave.push(starterList.children[i].textcontent);
+    for (var i = 0; i < starterList.children.length; i++) {
+        starterSave.push(starterList.children[i].textContent);
     }
     var entreeSave = [];
-    for (var i = 0; entreeList.children.length; i++){
-        entreeSave.push(entreeList.children[i].textcontent);
+    for (var i = 0; i < entreeList.children.length; i++) {
+        entreeSave.push(entreeList.children[i].textContent);
     }
 
 
-    
+
     localStorage.setItem('drinkmenu', JSON.stringify(drinkSave));
     localStorage.setItem('startermenu', JSON.stringify(starterSave));
     localStorage.setItem('entreemenu', JSON.stringify(entreeSave));
-    console.log(localStorage.setItem)
 }
 
+function restoreMenu() {
+    var savedDrinks = JSON.parse(localStorage.getItem('drinkmenu'));
+    var savedStarters = JSON.parse(localStorage.getItem('startermenu'));
+    var savedEntrees = JSON.parse(localStorage.getItem('entreemenu'));
 
+    for (i = 0; i < savedDrinks.length; i++) {
+        let newItem = document.createElement('li'); savedDrinks[i];
+        let delBtn = document.createElement('button');
+        delBtn.setAttribute("class", 'delBtn');
 
-saveBtn.addEventListener('click', saveMenu());
+        delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
 
+        newItem.textContent = savedDrinks[i];
+
+        drinksList.appendChild(newItem);
+        newItem.appendChild(delBtn);
+
+        //remove menu item
+        function remove() {
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+
+        var lis = document.querySelectorAll('li');
+        var button = document.querySelectorAll('.delBtn');
+
+        for (var j = 0, len = lis.length; j < len; j++) {
+            button[j].addEventListener('click', remove, false);
+        }
+    }
+    for (i = 0; i < savedStarters.length; i++) {
+        let newItem = document.createElement('li'); savedStarters[i];
+        let delBtn = document.createElement('button');
+        delBtn.setAttribute("class", 'delBtn');
+
+        delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+
+        newItem.textContent = savedStarters[i];
+
+        starterList.appendChild(newItem);
+        newItem.appendChild(delBtn);
+
+        //remove menu item
+        function remove() {
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+
+        var lis = document.querySelectorAll('li');
+        var button = document.querySelectorAll('.delBtn');
+
+        for (var j = 0, len = lis.length; j < len; j++) {
+            button[j].addEventListener('click', remove, false);
+        }
+    }
+    for (i = 0; i < savedEntrees.length; i++) {
+        let newItem = document.createElement('li'); savedEntrees[i];
+        let delBtn = document.createElement('button');
+        delBtn.setAttribute("class", 'delBtn');
+
+        delBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+
+        newItem.textContent = savedEntrees[i];
+
+        entreeList.appendChild(newItem);
+        newItem.appendChild(delBtn);
+
+        //remove menu item
+        function remove() {
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+
+        var lis = document.querySelectorAll('li');
+        var button = document.querySelectorAll('.delBtn');
+
+        for (var j = 0, len = lis.length; j < len; j++) {
+            button[j].addEventListener('click', remove, false);
+        }
+
+    }
+}
+
+restoreBtn.addEventListener('click', restoreMenu);
+saveBtn.addEventListener('click', saveMenu);
 
 // A function that prints the menu to a PDF?

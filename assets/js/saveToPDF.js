@@ -94,7 +94,7 @@ function saveToPDF() {
 
     doc.setFontSize(24);
     y += 10;
-    doc.text("Starters", 20, y);
+    doc.text("Entrees", 20, y);
 
     for (i=0; i<entreeSave.length; i++){
         let itemsList = entreeSave[i].split('-');

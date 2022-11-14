@@ -116,3 +116,9 @@ flex-grow: 0;
 .menuOptions > button {
     margin: 7px;
 }
+
+/* footer */
+
+footer > a {
+    color: #946c00;
+}
